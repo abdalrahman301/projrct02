@@ -16,20 +16,24 @@
 		356A514328929CCA007D769F /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A514228929CCA007D769F /* LogInViewController.swift */; };
 		356A514528929CE7007D769F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A514428929CE7007D769F /* HomeViewController.swift */; };
 		356A51482892A2CC007D769F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A51472892A2CC007D769F /* SignUpViewController.swift */; };
+		35F488A72892B953001BBA37 /* Helpers in Resources */ = {isa = PBXBuildFile; fileRef = 35F488A62892B953001BBA37 /* Helpers */; };
+		35F488A92892BA21001BBA37 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F488A82892BA21001BBA37 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		356A512928929C2E007D769F /* projrct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = projrct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356A512C28929C2E007D769F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		356A512E28929C2E007D769F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		356A513028929C2E007D769F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		356A513028929C2E007D769F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ViewControllers/ViewController.swift; sourceTree = "<group>"; };
 		356A513328929C2E007D769F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		356A513528929C30007D769F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		356A513828929C30007D769F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		356A513A28929C30007D769F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		356A514228929CCA007D769F /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		356A514428929CE7007D769F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		356A51472892A2CC007D769F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		356A514228929CCA007D769F /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ViewControllers/LogInViewController.swift; sourceTree = "<group>"; };
+		356A514428929CE7007D769F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ViewControllers/HomeViewController.swift; sourceTree = "<group>"; };
+		356A51472892A2CC007D769F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ViewControllers/SignUpViewController.swift; sourceTree = "<group>"; };
+		35F488A62892B953001BBA37 /* Helpers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Helpers; sourceTree = "<group>"; };
+		35F488A82892BA21001BBA37 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,26 +66,20 @@
 		356A512B28929C2E007D769F /* projrct */ = {
 			isa = PBXGroup;
 			children = (
+				35F488A62892B953001BBA37 /* Helpers */,
 				356A512C28929C2E007D769F /* AppDelegate.swift */,
 				356A512E28929C2E007D769F /* SceneDelegate.swift */,
+				35F488A82892BA21001BBA37 /* Utilities.swift */,
 				356A513228929C2E007D769F /* Main.storyboard */,
-				356A514628929CEF007D769F /* ViewControllers */,
+				356A513028929C2E007D769F /* ViewController.swift */,
+				356A514228929CCA007D769F /* LogInViewController.swift */,
+				356A51472892A2CC007D769F /* SignUpViewController.swift */,
+				356A514428929CE7007D769F /* HomeViewController.swift */,
 				356A513528929C30007D769F /* Assets.xcassets */,
 				356A513728929C30007D769F /* LaunchScreen.storyboard */,
 				356A513A28929C30007D769F /* Info.plist */,
 			);
 			path = projrct;
-			sourceTree = "<group>";
-		};
-		356A514628929CEF007D769F /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				356A513028929C2E007D769F /* ViewController.swift */,
-				356A514228929CCA007D769F /* LogInViewController.swift */,
-				356A51472892A2CC007D769F /* SignUpViewController.swift */,
-				356A514428929CE7007D769F /* HomeViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +142,7 @@
 			files = (
 				356A513928929C30007D769F /* LaunchScreen.storyboard in Resources */,
 				356A513628929C30007D769F /* Assets.xcassets in Resources */,
+				35F488A72892B953001BBA37 /* Helpers in Resources */,
 				356A513428929C2E007D769F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +156,7 @@
 			files = (
 				356A51482892A2CC007D769F /* SignUpViewController.swift in Sources */,
 				356A513128929C2E007D769F /* ViewController.swift in Sources */,
+				35F488A92892BA21001BBA37 /* Utilities.swift in Sources */,
 				356A512D28929C2E007D769F /* AppDelegate.swift in Sources */,
 				356A514328929CCA007D769F /* LogInViewController.swift in Sources */,
 				356A512F28929C2E007D769F /* SceneDelegate.swift in Sources */,
