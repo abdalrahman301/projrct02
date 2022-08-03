@@ -24,9 +24,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var Repasswordtxt: UITextField!
     
     @IBOutlet weak var SignUpButton: UIButton!
-    @IBOutlet weak var Errorlbl: UILabel!
+   
     
-    @IBOutlet weak var Pagesignup: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class SignUpViewController: UIViewController {
     }
     func setUpElements() {
          // Hide the error label
-               Errorlbl.alpha = 0
+               
                
                // Style the elements
                Utilities.styleTextField(FirstNametxt)
@@ -44,7 +44,7 @@ class SignUpViewController: UIViewController {
                Utilities.styleTextField(Passwordtxt)
                Utilities.styleTextField(Repasswordtxt)
                Utilities.styleFilledButton(SignUpButton)
-               Utilities.styleLabel(Pagesignup)
+            
         
     }
     
