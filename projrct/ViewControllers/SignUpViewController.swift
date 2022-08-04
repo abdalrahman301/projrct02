@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
     
@@ -17,40 +19,154 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var Emailtxt: UITextField!
     
-    @IBOutlet weak var PhoneNumbertxt: UITextField!
     
     @IBOutlet weak var Passwordtxt: UITextField!
     
-    @IBOutlet weak var Repasswordtxt: UITextField!
     
     @IBOutlet weak var SignUpButton: UIButton!
    
     
-
+    @IBOutlet weak var errlabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
     }
     func setUpElements() {
-         // Hide the error label
+        
                
                
-               // Style the elements
+        errlabel.alpha = 0
                Utilities.styleTextField(FirstNametxt)
                Utilities.styleTextField(LastNametxt)
                Utilities.styleTextField(Emailtxt)
-               Utilities.styleTextField(PhoneNumbertxt)
                Utilities.styleTextField(Passwordtxt)
-               Utilities.styleTextField(Repasswordtxt)
                Utilities.styleFilledButton(SignUpButton)
             
         
     }
     
+    
+    func validateFields() -> String? {
+        
+        
+        if FirstNametxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            LastNametxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            Emailtxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            Passwordtxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            
+            return "Please fill in all fields."
+        }
+        
+        // Check if the password is secure
+        let cleanedPassword = Passwordtxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if Utilities.isPasswordValid(cleanedPassword) == false {
+            
+            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+        }
+        
+        return nil
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBAction func SignUpClicked(_ sender: Any) {
+        
+        
+       
+        
+        
+        
+        
+        
+        
+        
+       let error = validateFields()
+            
+            if error != nil {
+                
+                
+                errlabel.text = "fill all blanks"
+            }
+            else {
+                
+                
+                let firstName = FirstNametxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let lastName = LastNametxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let email = Emailtxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let password = Passwordtxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+               
+                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                    guard let user = result?.user, error == nil else {
+                        self.errlabel.alpha = 1
+                        self.errlabel.text = (error?.localizedDescription)
+                        print (error!.localizedDescription)
+                        return
+                    }
+                
+                    let db = Firestore.firestore()
+                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
+                        
+                        if error != nil {
+                            // Show error message
+                            self.errlabel.text = "Error saving user data"
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                transitionToHome()
+                    
+                    
+                
+                
+                
+            
+        }
+        
+        func showError(_ message:String) {
+            
+            errlabel.text = message
+            errlabel.alpha = 1
+        }
+        
+        func transitionToHome() {
+            
+            let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+            
+            view.window?.rootViewController = homeViewController
+            view.window?.makeKeyAndVisible()
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
 
 
+}
 }

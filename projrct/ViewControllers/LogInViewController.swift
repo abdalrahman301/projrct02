@@ -8,12 +8,15 @@
 
 import UIKit
 
+import FirebaseAuth
+
 class LogInViewController: UIViewController {
     
     @IBOutlet weak var EmailTxt: UITextField!
     @IBOutlet weak var PasswordTxt: UITextField!
     @IBOutlet weak var LogInButton: UIButton!
 
+    @IBOutlet weak var errlbl: UILabel!
     
     
     override func viewDidLoad() {
@@ -24,10 +27,7 @@ setUpElements()
     
     func setUpElements() {
         
-        // Hide the error label
-        
-        
-        // Style the elements
+        errlbl.alpha = 0
         Utilities.styleTextField(EmailTxt)
         Utilities.styleTextField(PasswordTxt)
         Utilities.styleFilledButton(LogInButton)
@@ -35,9 +35,47 @@ setUpElements()
         
         
     }
-    @IBAction func LogInClicked(_ sender: Any) {
-    }
+   
+          
+        
+        
+       
     
- 
+    
+    
+    
+    
+    
+    
 
+    
+    @IBAction func LogInClicked(_ sender: Any) {
+        
+        let email = EmailTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = PasswordTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Signing in the user
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+                    guard let user = result?.user, error == nil else {
+                        self.errlbl.alpha = 1
+                        self.errlbl.text = (error?.localizedDescription)
+                        print (error!.localizedDescription)
+                        return
+                    }
+                
+                    let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+                    
+                    self.view.window?.rootViewController = homeViewController
+                    self.view.window?.makeKeyAndVisible()
+                   
+                
+                
+                
+            
+        
+        
+}
+    
+}
 }
