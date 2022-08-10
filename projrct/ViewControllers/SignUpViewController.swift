@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
-
+var dd = false
 class SignUpViewController: UIViewController {
     
     
@@ -55,7 +55,7 @@ class SignUpViewController: UIViewController {
             LastNametxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             Emailtxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             Passwordtxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            
+            dd = true
             return "Please fill in all fields."
         }
         
@@ -65,12 +65,12 @@ class SignUpViewController: UIViewController {
         if Utilities.isPasswordValid(cleanedPassword) == false {
             
             return "Please make sure your password is at least 8 characters, contains a special character and a number."
-        }
+        }else {
         
-        return nil
+            return nil }
     }
     
-    
+     
     
     
     
@@ -97,9 +97,15 @@ class SignUpViewController: UIViewController {
        let error = validateFields()
             
             if error != nil {
+                if dd == true {
+                errlabel.alpha = 1
+                    errlabel.text = "fill all blanks" }
+                else {
+                    errlabel.alpha = 1
+                    errlabel.text = "Please make sure your password is at least 8 characters, contains a special character and a number."
+                    
+                }
                 
-                
-                errlabel.text = "fill all blanks"
             }
             else {
                 
