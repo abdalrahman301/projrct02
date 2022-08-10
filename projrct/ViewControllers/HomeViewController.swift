@@ -66,6 +66,11 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
     
     @IBOutlet weak var MyCollectionView: UICollectionView!
     
+    
+
+    
+    
+    
     var perfumeList = [PerfumeData]()
     var searching = false
     var searchedperfume = [PerfumeData]()
@@ -81,6 +86,10 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
         configureSearchController()
         MyCollectionView.dataSource = self
         MyCollectionView.delegate = self
+        
+     
+        
+        
     
     }
     func fillData () {
@@ -104,6 +113,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
         self.navigationItem.searchController = searchController
         definesPresentationContext = true
         searchController.searchBar.placeholder = "Search Perfume By Name"
+        
     }
      
         

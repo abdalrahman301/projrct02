@@ -57,14 +57,14 @@ setUpElements()
         // Signing in the user
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-                    guard let user = result?.user, error == nil else {
+            guard let _ = result?.user, error == nil else {
                         self.errlbl.alpha = 1
                         self.errlbl.text = (error?.localizedDescription)
                         print (error!.localizedDescription)
                         return
                     }
                 
-                    let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+                    let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.TabViewController) as? CustomTabBarController
                     
                     self.view.window?.rootViewController = homeViewController
                     self.view.window?.makeKeyAndVisible()
