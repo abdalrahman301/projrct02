@@ -66,10 +66,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
     
     @IBOutlet weak var MyCollectionView: UICollectionView!
     
+    @IBOutlet weak var segment: UISegmentedControl!
     
 
-    
-    
     
     var perfumeList = [PerfumeData]()
     var searching = false
@@ -93,12 +92,12 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
     
     }
     func fillData () {
-        let perfume1 = PerfumeData(pName: "Blue De Channel", pImg: "bluede", pPrice: "60$")
+        let perfume1 = PerfumeData(pName: "Blue De Channel", pImg: "bluede", pPrice: "60JD")
         perfumeList.append(perfume1)
-        let perfume2 = PerfumeData(pName: "Creed Aventus", pImg: "creed", pPrice: "90$")
+        let perfume2 = PerfumeData(pName: "Creed Aventus", pImg: "creed", pPrice: "90JD")
         perfumeList.append(perfume2)
         
-        let perfume3 = PerfumeData(pName: "Lacoste Pink", pImg: "pp", pPrice: "45$")
+        let perfume3 = PerfumeData(pName: "Lacoste Pink", pImg: "pp", pPrice: "45JD")
         perfumeList.append(perfume3)
         
     }

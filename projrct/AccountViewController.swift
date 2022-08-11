@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class AccountViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -20,6 +22,38 @@ class AccountViewController: UIViewController, UITableViewDelegate , UITableView
                              
     return cell
         
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+           
+            let next = self.storyboard?.instantiateViewController(withIdentifier: "profileVC") as! ProfileViewController
+            self.present(next, animated: true, completion: nil)
+            
+        }else if indexPath.row == 1{
+             let next = self.storyboard?.instantiateViewController(withIdentifier: "ordersVC") as! MyOrdersViewController
+                       self.present(next, animated: true, completion: nil)
+        }else if indexPath.row == 2 {
+             let next = self.storyboard?.instantiateViewController(withIdentifier: "discountVC") as! DiscountViewController
+                       self.present(next, animated: true, completion: nil)
+        }else if indexPath.row == 4 {
+            do {
+                try Auth.auth().signOut()
+                self.dismiss(animated: true, completion: nil)
+                let VCViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.Viewcontroller) as? ViewController
+                
+                self.view.window?.rootViewController = VCViewController
+                self.view.window?.makeKeyAndVisible()
+                
+                
+                } catch let err {
+                    let errAlertSent = UIAlertController(title: "Error", message: err.localizedDescription, preferredStyle: .alert)
+                                      errAlertSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                      self.present(errAlertSent, animated: true, completion: nil)
+            }
+                }
+        else {
+            print("next time")
+        }
     }
     
 
@@ -42,10 +76,12 @@ filldata()
         AccountList.append(account1)
          let account2 = AccountData(AName: "My Orders", AImg: "orders")
         AccountList.append(account2)
-         let account3 = AccountData(AName: "Help", AImg: "help")
+         let account3 = AccountData(AName: "Codes", AImg: "discount")
                AccountList.append(account3)
-         let account4 = AccountData(AName: "Log out", AImg: "logout")
+         let account4 = AccountData(AName: "Help", AImg: "help")
                AccountList.append(account4)
+        let account5 = AccountData(AName: "Log out", AImg: "logout")
+        AccountList.append(account5)
     }
     
 }

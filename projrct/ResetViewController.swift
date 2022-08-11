@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class ResetViewController: UIViewController {
     
@@ -19,6 +21,9 @@ class ResetViewController: UIViewController {
     
     @IBOutlet weak var labelone: UILabel!
     @IBOutlet weak var labeltwo: UILabel!
+    
+    @IBOutlet weak var myEmail: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +53,32 @@ setUpElements()
         labelone.alpha = 1
         TextCode.alpha = 1
         CheckButton.alpha = 1
+        Auth.auth().sendPasswordReset(withEmail: myEmail.text!) { error in
+            DispatchQueue.main.async {
+                if self.myEmail.text?.isEmpty==true || error != nil {
+                    let resetFailedAlert = UIAlertController(title: "Reset Failed", message: "Error: \(String(describing: error?.localizedDescription))", preferredStyle: .alert)
+                    resetFailedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(resetFailedAlert, animated: true, completion: nil)
+                }
+                if error == nil && self.myEmail.text?.isEmpty==false{
+                    let resetEmailAlertSent = UIAlertController(title: "Reset Email Sent", message: "Reset email has been sent to your login email, please follow the instructions in the mail to reset your password", preferredStyle: .alert)
+                    resetEmailAlertSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(resetEmailAlertSent, animated: true, completion: nil)
+                }
+            }
+        }
+        
+        
+        
     }
     
     @IBAction func checkButtonClick(_ sender: Any) {
+          
         labeltwo.alpha = 1
         Passtxtnew.alpha = 1
         repasstxtnew.alpha = 1
         ResetButton.alpha = 1
+        
     }
     
     @IBAction func resetButtonClick(_ sender: Any) {

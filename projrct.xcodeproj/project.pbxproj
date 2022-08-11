@@ -12,6 +12,9 @@
 		3513E5E228A3CFF000FE0F84 /* MyFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3513E5E128A3CFF000FE0F84 /* MyFirstTableViewCell.swift */; };
 		3513E5E428A3D10D00FE0F84 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3513E5E328A3D10D00FE0F84 /* AccountViewController.swift */; };
 		3513E5E628A3D24A00FE0F84 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3513E5E528A3D24A00FE0F84 /* AccountData.swift */; };
+		3513E5E828A51EEA00FE0F84 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3513E5E728A51EEA00FE0F84 /* ProfileViewController.swift */; };
+		3513E5EA28A51F0200FE0F84 /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3513E5E928A51F0200FE0F84 /* MyOrdersViewController.swift */; };
+		3513E5EC28A51F1600FE0F84 /* DiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3513E5EB28A51F1600FE0F84 /* DiscountViewController.swift */; };
 		35258D20289AAA6F0016D7D5 /* PerfumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35258D1F289AAA6F0016D7D5 /* PerfumeData.swift */; };
 		356A512D28929C2E007D769F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A512C28929C2E007D769F /* AppDelegate.swift */; };
 		356A512F28929C2E007D769F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A512E28929C2E007D769F /* SceneDelegate.swift */; };
@@ -34,6 +37,9 @@
 		3513E5E128A3CFF000FE0F84 /* MyFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstTableViewCell.swift; sourceTree = "<group>"; };
 		3513E5E328A3D10D00FE0F84 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		3513E5E528A3D24A00FE0F84 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
+		3513E5E728A51EEA00FE0F84 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3513E5E928A51F0200FE0F84 /* MyOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
+		3513E5EB28A51F1600FE0F84 /* DiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountViewController.swift; sourceTree = "<group>"; };
 		35258D1F289AAA6F0016D7D5 /* PerfumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfumeData.swift; sourceTree = "<group>"; };
 		356A512928929C2E007D769F /* projrct.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = projrct.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		356A512C28929C2E007D769F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +115,9 @@
 				3513E5E128A3CFF000FE0F84 /* MyFirstTableViewCell.swift */,
 				3513E5E328A3D10D00FE0F84 /* AccountViewController.swift */,
 				3513E5E528A3D24A00FE0F84 /* AccountData.swift */,
+				3513E5E728A51EEA00FE0F84 /* ProfileViewController.swift */,
+				3513E5E928A51F0200FE0F84 /* MyOrdersViewController.swift */,
+				3513E5EB28A51F1600FE0F84 /* DiscountViewController.swift */,
 			);
 			path = projrct;
 			sourceTree = "<group>";
@@ -252,10 +261,13 @@
 				3513E5E028A3C71F00FE0F84 /* CustomTabBarController.swift in Sources */,
 				356A513128929C2E007D769F /* ViewController.swift in Sources */,
 				35258D20289AAA6F0016D7D5 /* PerfumeData.swift in Sources */,
+				3513E5E828A51EEA00FE0F84 /* ProfileViewController.swift in Sources */,
+				3513E5EC28A51F1600FE0F84 /* DiscountViewController.swift in Sources */,
 				358D2BD9289AA7430034334C /* MyCollectionViewCell.swift in Sources */,
 				35F488A92892BA21001BBA37 /* Utilities.swift in Sources */,
 				3513E5E228A3CFF000FE0F84 /* MyFirstTableViewCell.swift in Sources */,
 				356A512D28929C2E007D769F /* AppDelegate.swift in Sources */,
+				3513E5EA28A51F0200FE0F84 /* MyOrdersViewController.swift in Sources */,
 				3513E5E628A3D24A00FE0F84 /* AccountData.swift in Sources */,
 				356A514328929CCA007D769F /* LogInViewController.swift in Sources */,
 				356A512F28929C2E007D769F /* SceneDelegate.swift in Sources */,
