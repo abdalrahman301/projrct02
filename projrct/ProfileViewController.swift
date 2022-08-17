@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
@@ -25,6 +26,22 @@ setUpElements()
         Utilities.styleFilledButton(logoutButton)
     }
 
-  
+    @IBAction func logoutpressed(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+            let VCViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.Viewcontroller) as? ViewController
+            
+            self.view.window?.rootViewController = VCViewController
+            self.view.window?.makeKeyAndVisible()
+            
+            
+            } catch let err {
+                let errAlertSent = UIAlertController(title: "Error", message: err.localizedDescription, preferredStyle: .alert)
+                                  errAlertSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                  self.present(errAlertSent, animated: true, completion: nil)
+        }
+    }
+    
 
 }

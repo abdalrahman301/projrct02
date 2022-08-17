@@ -54,7 +54,7 @@ setUpElements()
         let email = EmailTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = PasswordTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        // Signing in the user
+       
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             guard let _ = result?.user, error == nil else {

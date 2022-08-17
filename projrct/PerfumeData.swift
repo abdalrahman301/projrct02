@@ -10,11 +10,13 @@ import Foundation
 class PerfumeData {
     let perfumeName : String
     var PerfumeImage : String
-    var PerfumePrice : String
-    init(pName : String , pImg : String , pPrice : String) {
+    var PerfumePrice : Double
+    var perfumeGender : String
+    init(pName : String , pImg : String , pPrice : Double , pGender : String ) {
         perfumeName = pName
         PerfumeImage = pImg
         PerfumePrice = pPrice
+        perfumeGender = pGender
         
     }
 }

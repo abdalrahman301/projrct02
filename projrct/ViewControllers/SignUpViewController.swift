@@ -99,7 +99,9 @@ class SignUpViewController: UIViewController {
             if error != nil {
                 if dd == true {
                 errlabel.alpha = 1
-                    errlabel.text = "fill all blanks" }
+                    errlabel.text = "fill all blanks"
+                    dd = false
+                }
                 else {
                     errlabel.alpha = 1
                     errlabel.text = "Please make sure your password is at least 8 characters, contains a special character and a number."

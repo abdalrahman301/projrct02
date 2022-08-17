@@ -14,6 +14,7 @@ struct Constants {
         
         static let TabViewController = "TabVC"
         static let Viewcontroller = "ViewControllerVC"
+        static let DetailsViewController = "DetailsVC"
         
     }
     
