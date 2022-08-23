@@ -52,7 +52,9 @@ class AccountViewController: UIViewController, UITableViewDelegate , UITableView
             }
                 }
         else {
-            print("next time")
+            let showAboutSent = UIAlertController(title: "About!", message: "You can know more about us if you visit our website www.perfumeworld.com ", preferredStyle: .alert)
+            showAboutSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(showAboutSent, animated: true, completion: nil)
         }
     }
     

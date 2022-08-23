@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var LogButton: UIButton!
     
     
-    @IBOutlet weak var SkipButton: UIButton!
+
     
 
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
            
            Utilities.styleFilledButton(SignButton)
            Utilities.styleHollowButton(LogButton)
-        Utilities.styleFilledButton(SkipButton)
+        
            
        }
   

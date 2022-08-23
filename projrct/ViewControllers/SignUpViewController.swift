@@ -132,17 +132,16 @@ class SignUpViewController: UIViewController {
                         if error != nil {
                             // Show error message
                             self.errlabel.text = "Error saving user data"
+                            
                         }
                     }
                     
                     
-                    
-                    
+                  
                     
                     
                 transitionToHome()
-                    
-                    
+                  
                 
                 
                 

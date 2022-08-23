@@ -23,16 +23,36 @@ class DetailsViewController: UIViewController {
     
     @IBOutlet weak var addtocart: UIButton!
     
+    @IBOutlet weak var stepper: UIStepper!
+    
+    @IBOutlet weak var numberlabel: UILabel!
+    
+    
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Utilities.styleFilledButton(addtocart)
         passedimage.image = imagerecieved
         passedname.text = namerecieved
         paseedprice.text = pricerecieved
+         stepper.wraps = true
+         stepper.autorepeat = true
+         stepper.maximumValue = 10
+        stepper.minimumValue = 1
       
     }
     
+    @IBAction func stepperchange(_ sender: UIStepper) {
+        numberlabel.text = Int(sender.value).description
+    }
+    
 
+    @IBAction func AddButton(_ sender: Any) {
+        
+    }
+    
     
 
 }

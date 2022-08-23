@@ -8,10 +8,13 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var editButton: UIButton!
+
+    
+    @IBOutlet weak var Username: UILabel!
     
     
     @IBOutlet weak var logoutButton: UIButton!
@@ -19,11 +22,14 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 setUpElements()
-        
+       
     }
     func setUpElements() {
-        Utilities.styleHollowButton(editButton)
+        
         Utilities.styleFilledButton(logoutButton)
+        
+        
+        
     }
 
     @IBAction func logoutpressed(_ sender: Any) {
@@ -42,6 +48,8 @@ setUpElements()
                                   self.present(errAlertSent, animated: true, completion: nil)
         }
     }
+    
+
     
 
 }

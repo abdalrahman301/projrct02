@@ -108,7 +108,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
     
     @IBOutlet weak var MyCollectionView: UICollectionView!
     
-    @IBOutlet weak var segment: UISegmentedControl!
+
     
 
     

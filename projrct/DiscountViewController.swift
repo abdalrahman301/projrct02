@@ -9,8 +9,8 @@
 import UIKit
 
 class DiscountViewController: UIViewController {
-    
-    
+    let code = "ABd11"
+    var discount = false
     @IBOutlet weak var theCode: UITextField!
     
 
@@ -31,5 +31,15 @@ class DiscountViewController: UIViewController {
         label.alpha = 0 
     }
   
-
+    @IBAction func Confirm(_ sender: Any) {
+        if theCode.text == code {
+            discount = true
+        }else {
+         let showTryAgainSent = UIAlertController(title: "Wrong code!", message: "Wrong code try agailn later  ", preferredStyle: .alert)
+                   showTryAgainSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                   self.present(showTryAgainSent, animated: true, completion: nil)
+        }
+        
+    }
+    
 }
