@@ -51,6 +51,9 @@ class DetailsViewController: UIViewController {
 
     @IBAction func AddButton(_ sender: Any) {
         
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "CheckVC") as! CheckOutViewController
+        self.present(next, animated: true, completion: nil)
+        
     }
     
     

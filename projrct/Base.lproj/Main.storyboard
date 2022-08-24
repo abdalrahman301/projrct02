@@ -613,7 +613,7 @@
                                         </constraints>
                                         <state key="normal" title="ADD TO CART"/>
                                         <connections>
-                                            <action selector="AddButton:" destination="5U5-ST-ykR" eventType="touchUpInside" id="47B-56-o3l"/>
+                                            <action selector="AddButton:" destination="5U5-ST-ykR" eventType="touchUpInside" id="SNW-E4-J34"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -643,7 +643,7 @@
         <!--Check Out-->
         <scene sceneID="Jvs-6Q-BGj">
             <objects>
-                <viewController id="kEe-7h-RpY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckVC" id="kEe-7h-RpY" customClass="CheckOutViewController" customModule="projrct" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3n-aP-l97">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -754,6 +754,11 @@
                         <viewLayoutGuide key="safeArea" id="sTl-GK-Z2I"/>
                     </view>
                     <navigationItem key="navigationItem" title="Check Out" id="iCo-t5-UlQ"/>
+                    <connections>
+                        <outlet property="adress" destination="a1R-Kq-4TZ" id="M1S-dR-fgu"/>
+                        <outlet property="payment" destination="MbC-fM-ObN" id="lQF-Yv-yEG"/>
+                        <outlet property="phone" destination="u9X-E7-enJ" id="Ema-an-uU4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qIB-ar-bSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
