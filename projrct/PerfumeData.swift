@@ -12,11 +12,12 @@ class PerfumeData {
     var PerfumeImage : String
     var PerfumePrice : Double
     var perfumeGender : String
-    init(pName : String , pImg : String , pPrice : Double , pGender : String ) {
+    var perfumeDesc : String
+    init(pName : String , pImg : String , pPrice : Double , pGender : String , pDesc : String) {
         perfumeName = pName
         PerfumeImage = pImg
         PerfumePrice = pPrice
         perfumeGender = pGender
-        
+        perfumeDesc = pDesc
     }
 }

@@ -39,9 +39,12 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
                       
             
         }
+        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderWidth = 0.5
         return cell
         
     }
+    
     
     func updateSearchResults(for searchController: UISearchController) {
         let scopeButton = searchController.searchBar.scopeButtonTitles![searchController.searchBar.selectedScopeButtonIndex]
@@ -101,15 +104,18 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
             VCViewController?.imagerecieved = UIImage(named:searchedperfume[indexPath.row].PerfumeImage)!
             VCViewController?.namerecieved = ("\(searchedperfume[indexPath.row].perfumeName)")
             VCViewController?.pricerecieved = ("\(searchedperfume[indexPath.row].PerfumePrice) Jd")
+            VCViewController?.descrecieved = ("\(searchedperfume[indexPath.row].perfumeDesc)")
         self.present((VCViewController)!, animated: true, completion: nil)
         }
         else {
             VCViewController?.imagerecieved = UIImage(named:perfumeList[indexPath.row].PerfumeImage)!
                        VCViewController?.namerecieved = ("\(perfumeList[indexPath.row].perfumeName)")
                        VCViewController?.pricerecieved = ("\(perfumeList[indexPath.row].PerfumePrice) Jd")
+            VCViewController?.descrecieved = ("\(perfumeList[indexPath.row].perfumeDesc)")
                    self.present((VCViewController)!, animated: true, completion: nil)
         }
     }
+  
     
     @IBOutlet weak var MyCollectionView: UICollectionView!
     
@@ -142,7 +148,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
                     let img = document.data()["image"] as? String
                     let prc = document.data()["price"] as? Double
                     let gender = document.data()["Gender"] as? String
-                    let doc = PerfumeData(pName: nam ?? "", pImg: img ?? "" , pPrice: prc ?? 0 , pGender: gender ?? "")
+                    let desc = document.data()["desc"] as? String
+                    let doc = PerfumeData(pName: nam ?? "" , pImg: img  ?? "" , pPrice: prc  ?? 0 , pGender: gender ?? "", pDesc: desc  ?? "")
                     self?.perfumeList.append(doc)
                     self?.MyCollectionView.reloadData()
                     

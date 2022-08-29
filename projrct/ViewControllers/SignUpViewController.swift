@@ -133,13 +133,15 @@ class SignUpViewController: UIViewController {
                             // Show error message
                             self.errlabel.text = "Error saving user data"
                             
+                        }else {
+                            var user = firstName + lastName
+                            
                         }
                     }
                     
                     
                   
-                    
-                    
+                 
                 transitionToHome()
                   
                 

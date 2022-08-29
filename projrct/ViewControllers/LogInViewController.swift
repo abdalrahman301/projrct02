@@ -9,6 +9,7 @@
 import UIKit
 
 import FirebaseAuth
+import FirebaseFirestore
 
 class LogInViewController: UIViewController {
     
@@ -23,6 +24,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
 setUpElements()
         
+        
     }
     
     func setUpElements() {
@@ -31,7 +33,8 @@ setUpElements()
         Utilities.styleTextField(EmailTxt)
         Utilities.styleTextField(PasswordTxt)
         Utilities.styleFilledButton(LogInButton)
-        
+        EmailTxt.text = "Admin@admin.com"
+        PasswordTxt.text = "Admin@123"
         
         
     }
@@ -63,7 +66,9 @@ setUpElements()
                         print (error!.localizedDescription)
                         return
                     }
-                
+           
+           
+          
                     let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.TabViewController) as? CustomTabBarController
                     
                     self.view.window?.rootViewController = homeViewController

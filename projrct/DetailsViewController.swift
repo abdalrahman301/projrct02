@@ -28,7 +28,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var numberlabel: UILabel!
     
     
-
+    @IBOutlet weak var passeddescreption: UILabel!
+    var descrecieved = ""
     
     
     override func viewDidLoad() {
@@ -37,6 +38,7 @@ class DetailsViewController: UIViewController {
         passedimage.image = imagerecieved
         passedname.text = namerecieved
         paseedprice.text = pricerecieved
+        passeddescreption.text = descrecieved
          stepper.wraps = true
          stepper.autorepeat = true
          stepper.maximumValue = 10
