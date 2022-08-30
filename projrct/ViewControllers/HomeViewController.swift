@@ -110,7 +110,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
         else {
             VCViewController?.imagerecieved = UIImage(named:perfumeList[indexPath.row].PerfumeImage)!
                        VCViewController?.namerecieved = ("\(perfumeList[indexPath.row].perfumeName)")
-                       VCViewController?.pricerecieved = ("\(perfumeList[indexPath.row].PerfumePrice) Jd")
+                       VCViewController?.pricerecieved = ("\(perfumeList[indexPath.row].PerfumePrice)")
             VCViewController?.descrecieved = ("\(perfumeList[indexPath.row].perfumeDesc)")
                    self.present((VCViewController)!, animated: true, completion: nil)
         }
@@ -153,13 +153,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
                     self?.perfumeList.append(doc)
                     self?.MyCollectionView.reloadData()
                     
-                    
-                   // print(nam ?? "" , img ?? "" , prc ?? 0 , gender ?? "")
-                    
-                                            
-                    
                 }
-               
+                   // print(nam ?? "" , img ?? "" , prc ?? 0 , gender ?? "")
                 
             }
         }

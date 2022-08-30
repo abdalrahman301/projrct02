@@ -43,6 +43,7 @@ class DetailsViewController: UIViewController {
          stepper.autorepeat = true
          stepper.maximumValue = 10
         stepper.minimumValue = 1
+        
       
     }
     
@@ -52,9 +53,17 @@ class DetailsViewController: UIViewController {
     
 
     @IBAction func AddButton(_ sender: Any) {
+        let numberofitems = Double(numberlabel.text!) ?? 1
+        let price = Double(pricerecieved) ?? 1
+        let finalprice = numberofitems * price
+        let VCiewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.CartViewController) as? CartViewController
+        VCiewController?.imagecartrecieved = imagerecieved
+        VCiewController?.namecartrecieved = namerecieved
+        VCiewController?.numbercartrecieved = numberlabel.text! + "X"
+        VCiewController?.pricecartrecieved = "\(finalprice)Jd"
+       
+                    self.present((VCiewController)!, animated: true, completion: nil)
         
-        let next = self.storyboard?.instantiateViewController(withIdentifier: "CheckVC") as! CheckOutViewController
-        self.present(next, animated: true, completion: nil)
         
     }
     

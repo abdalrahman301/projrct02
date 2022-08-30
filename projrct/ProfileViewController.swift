@@ -22,7 +22,24 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 setUpElements()
-       
+                              guard let userId = Auth.auth().currentUser?.uid else {return}
+             //print(userId)
+             let db = Firestore.firestore()
+             
+
+        db.collection("users").whereField("uid", isEqualTo: userId)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                     let first = document.data()["firstname"] as? String
+                     let last = document.data()["lastname"] as? String
+                     let fullusername = (first! + " " + last!)
+                        self.Username.text = fullusername
+                    }
+                }
+        }
     }
     func setUpElements() {
         
