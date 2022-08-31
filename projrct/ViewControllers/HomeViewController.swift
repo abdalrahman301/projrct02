@@ -103,7 +103,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
         if searching || scopeButtonPressed {
             VCViewController?.imagerecieved = UIImage(named:searchedperfume[indexPath.row].PerfumeImage)!
             VCViewController?.namerecieved = ("\(searchedperfume[indexPath.row].perfumeName)")
-            VCViewController?.pricerecieved = ("\(searchedperfume[indexPath.row].PerfumePrice) Jd")
+            VCViewController?.pricerecieved = searchedperfume[indexPath.row].PerfumePrice
             VCViewController?.descrecieved = ("\(searchedperfume[indexPath.row].perfumeDesc)")
             VCViewController?.imgname = ("\(searchedperfume[indexPath.row].PerfumeImage)")
         self.present((VCViewController)!, animated: true, completion: nil)
@@ -111,7 +111,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
         else {
             VCViewController?.imagerecieved = UIImage(named:perfumeList[indexPath.row].PerfumeImage)!
                        VCViewController?.namerecieved = ("\(perfumeList[indexPath.row].perfumeName)")
-                       VCViewController?.pricerecieved = ("\(perfumeList[indexPath.row].PerfumePrice)")
+                       VCViewController?.pricerecieved = perfumeList[indexPath.row].PerfumePrice
             VCViewController?.descrecieved = ("\(perfumeList[indexPath.row].perfumeDesc)")
             VCViewController?.imgname = ("\(perfumeList[indexPath.row].PerfumeImage)")
                    self.present((VCViewController)!, animated: true, completion: nil)

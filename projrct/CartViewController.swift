@@ -39,12 +39,14 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
              self.arr.remove(at: indexPath.row)
              //reload the table to avoid index out of bounds crash..
              self.cartTableView.deleteRows(at: [indexPath], with: .automatic)
+        
              complete(true)
          }
          
          
          let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
          configuration.performsFirstActionWithFullSwipe = true
+            //self.cartTableView.reloadData()
          return configuration
      }
     
@@ -67,7 +69,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
       
         cartTableView.dataSource = self
         cartTableView.delegate = self
-        //cartTableView.reloadData()
+        cartTableView.reloadData()
         
                               guard let userId = Auth.auth().currentUser?.uid else {return}
              //print(userId)
@@ -89,7 +91,12 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                         let doc = CartData(CName: name ?? "", CImg: image ?? "", CPrc: price ?? 0 , CNmbr: number ?? 0)
                        
                         self?.arr.append(doc)
+                        //let Myindex = IndexPath(row: (self?.arr.count)!-1, section: 0)
+                        //self?.cartTableView.beginUpdates()
+                        //self?.cartTableView.insertRows(at: [Myindex], with: .top)
+                        //self?.cartTableView.endUpdates()
                         self?.cartTableView.reloadData()
+
                     }
                 }
         }

@@ -22,7 +22,7 @@ class DetailsViewController: UIViewController {
     var namerecieved = ""
     
     @IBOutlet weak var paseedprice: UILabel!
-    var pricerecieved = ""
+    var pricerecieved = 0.5
     
     @IBOutlet weak var addtocart: UIButton!
     
@@ -41,7 +41,7 @@ class DetailsViewController: UIViewController {
         Utilities.styleFilledButton(addtocart)
         passedimage.image = imagerecieved
         passedname.text = namerecieved
-        paseedprice.text = pricerecieved
+        paseedprice.text = "\(pricerecieved) Jd"
         passeddescreption.text = descrecieved
          stepper.wraps = true
          stepper.autorepeat = true
@@ -57,14 +57,14 @@ class DetailsViewController: UIViewController {
 
     @IBAction func AddButton(_ sender: Any) {
         let numberofitems = Double(numberlabel.text!) ?? 1
-        let price = Double(pricerecieved) ?? 1
+        let price = pricerecieved
         let finalprice = numberofitems * price
         guard let userId = Auth.auth().currentUser?.uid else {return}
         let db = Firestore.firestore()
         var ref: DocumentReference? = nil
         ref = db.collection("cart").addDocument(data: [
             "name": namerecieved,
-            "imag": imgname,
+            "image": imgname,
             "price" : finalprice,
             "number" : numberofitems,
             "uid" : userId
@@ -74,6 +74,9 @@ class DetailsViewController: UIViewController {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added with ID: \(ref!.documentID)")
+                let showAddedSent = UIAlertController(title: "success!", message: "The prfume added successfully to cart ", preferredStyle: .alert)
+                showAddedSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(showAddedSent, animated: true, completion: nil)
             }
         }
         
