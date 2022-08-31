@@ -105,6 +105,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
             VCViewController?.namerecieved = ("\(searchedperfume[indexPath.row].perfumeName)")
             VCViewController?.pricerecieved = ("\(searchedperfume[indexPath.row].PerfumePrice) Jd")
             VCViewController?.descrecieved = ("\(searchedperfume[indexPath.row].perfumeDesc)")
+            VCViewController?.imgname = ("\(searchedperfume[indexPath.row].PerfumeImage)")
         self.present((VCViewController)!, animated: true, completion: nil)
         }
         else {
@@ -112,6 +113,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
                        VCViewController?.namerecieved = ("\(perfumeList[indexPath.row].perfumeName)")
                        VCViewController?.pricerecieved = ("\(perfumeList[indexPath.row].PerfumePrice)")
             VCViewController?.descrecieved = ("\(perfumeList[indexPath.row].perfumeDesc)")
+            VCViewController?.imgname = ("\(perfumeList[indexPath.row].PerfumeImage)")
                    self.present((VCViewController)!, animated: true, completion: nil)
         }
     }
@@ -145,11 +147,11 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
             } else {
                 for document in querySnapshot!.documents {
                     let nam = document.data()["name"] as? String
-                    let img = document.data()["image"] as? String
+                   let img = document.data()["image"] as? String
                     let prc = document.data()["price"] as? Double
                     let gender = document.data()["Gender"] as? String
                     let desc = document.data()["desc"] as? String
-                    let doc = PerfumeData(pName: nam ?? "" , pImg: img  ?? "" , pPrice: prc  ?? 0 , pGender: gender ?? "", pDesc: desc  ?? "")
+                    let doc = PerfumeData(pName: nam ?? "" , pImg: img ?? "help" , pPrice: prc  ?? 0 , pGender: gender ?? "", pDesc: desc  ?? "")
                     self?.perfumeList.append(doc)
                     self?.MyCollectionView.reloadData()
                     

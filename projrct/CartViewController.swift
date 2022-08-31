@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAnalytics
+import FirebaseAuth
+import FirebaseCore
 
 class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -16,10 +20,10 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
          let cell = cartTableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as! CartTableViewCell
-        cell.imageproduct.image = arr[indexPath.row].CartImage
+        cell.imageproduct.image = UIImage(named: arr[indexPath.row].CartImage) ?? UIImage(named: "help")
         cell.nameproduct.text = arr[indexPath.row].CartName
         cell.numberproduct.text = ("\(arr[indexPath.row].CartNumber)X")
-        cell.priceproduct.text = arr[indexPath.row].CartPrice
+        cell.priceproduct.text = "\(arr[indexPath.row].CartPrice) Jd"
         //tableView.reloadData()
            return cell
     }
@@ -49,9 +53,9 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var checkOut: UIButton!
     var imagecartrecieved = UIImage()
-    var pricecartrecieved = ""
-    var numbercartrecieved = ""
-    var namecartrecieved = ""
+    //var pricecartrecieved = ""
+    //var numbercartrecieved = ""
+    //var namecartrecieved = ""
     
     var arr = [CartData]()
 
@@ -65,14 +69,32 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cartTableView.delegate = self
         //cartTableView.reloadData()
         
+                              guard let userId = Auth.auth().currentUser?.uid else {return}
+             //print(userId)
+             let db = Firestore.firestore()
+             
+
+        db.collection("cart").whereField("uid", isEqualTo: userId)
+            .getDocuments() {[weak self] (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                     let name = document.data()["name"] as? String
+                     let image = document.data()["image"] as? String
+                        let price = document.data()["price"] as? Double
+                        let number = document.data()["number"] as? Double
+                        //print(document.data())
+                       
+                        let doc = CartData(CName: name ?? "", CImg: image ?? "", CPrc: price ?? 0 , CNmbr: number ?? 0)
+                       
+                        self?.arr.append(doc)
+                        self?.cartTableView.reloadData()
+                    }
+                }
+        }
+       
         
-        
-          let arr0 = CartData(CName: namecartrecieved, CImg: imagecartrecieved, CPrc: pricecartrecieved, CNmbr: numbercartrecieved)
-        arr.append(arr0)
-        let Myindex = IndexPath(row: arr.count-1, section: 0)
-        cartTableView.beginUpdates()
-        cartTableView.insertRows(at: [Myindex], with: .top)
-        cartTableView.endUpdates()
 
     }
 

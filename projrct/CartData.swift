@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 class CartData {
     var CartName : String
-    let CartImage : UIImage
-    var CartPrice : String
-    var CartNumber : String
+    let CartImage : String
+    var CartPrice : Double
+    var CartNumber : Double
     
     
-    init(CName : String , CImg : UIImage , CPrc : String, CNmbr : String ) {
+    init(CName : String , CImg : String , CPrc : Double, CNmbr : Double) {
         CartName = CName
         CartImage = CImg
         CartPrice = CPrc

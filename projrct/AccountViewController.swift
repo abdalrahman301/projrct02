@@ -85,6 +85,8 @@ filldata()
                      let last = document.data()["lastname"] as? String
                      let fullusername = (first! + " " + last!)
                         self.Accountname.text = fullusername
+                       
+                        
                     }
                 }
         }
