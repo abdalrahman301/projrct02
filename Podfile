@@ -9,5 +9,6 @@ target 'projrct' do
 pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
+pod 'Firebase/Messaging'
 
 end

@@ -63,6 +63,7 @@
 		358D192C28B4E9E200581BFD /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		358D2BD4289A97380034334C /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		358D2BD8289AA7430034334C /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		35E29F9D28C13882007FA255 /* projrct.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = projrct.entitlements; sourceTree = "<group>"; };
 		35E966FA28AD0824002CA61E /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		35F488A82892BA21001BBA37 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		35FCAADD289BDF74009004D3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -105,6 +106,7 @@
 		356A512B28929C2E007D769F /* projrct */ = {
 			isa = PBXGroup;
 			children = (
+				35E29F9D28C13882007FA255 /* projrct.entitlements */,
 				356A512C28929C2E007D769F /* AppDelegate.swift */,
 				356A512E28929C2E007D769F /* SceneDelegate.swift */,
 				35F488A82892BA21001BBA37 /* Utilities.swift */,
@@ -437,6 +439,7 @@
 			baseConfigurationReference = 686FE049476773AA9E2B68C8 /* Pods-projrct.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = projrct/projrct.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J9MX62CCNB;
 				INFOPLIST_FILE = projrct/Info.plist;
@@ -457,6 +460,7 @@
 			baseConfigurationReference = 6C2702538E6B5480BC73A89A /* Pods-projrct.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = projrct/projrct.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J9MX62CCNB;
 				INFOPLIST_FILE = projrct/Info.plist;

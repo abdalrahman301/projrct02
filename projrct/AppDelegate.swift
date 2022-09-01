@@ -8,7 +8,9 @@
 
 import UIKit
 import FirebaseCore
-
+import FirebaseMessaging
+import Firebase
+import UserNotifications
 
 
 @UIApplicationMain
@@ -17,7 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert , .sound]) { (granted, error) in
+            
+            
+        }
+        let content = UNMutableNotificationContent()
+        content.title = "Hey"
+        content.body = "notify!"
+        let date = Date().addingTimeInterval(10)
+        let dateComponents = Calendar.current.dateComponents([.year , .month , .day ,.hour ,.minute ,.second], from: date)
+        let uuidString = UUID().uuidString
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        center.add(request) { (error) in
+            //yes
+        }
         FirebaseApp.configure()
         return true
     }
