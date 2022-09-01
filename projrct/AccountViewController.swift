@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseCore
+import FirebaseAnalytics
 
 class AccountViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,13 +38,27 @@ class AccountViewController: UIViewController, UITableViewDelegate , UITableView
              let next = self.storyboard?.instantiateViewController(withIdentifier: "discountVC") as! DiscountViewController
                        self.present(next, animated: true, completion: nil)
         }else if indexPath.row == 4 {
-            do {
-                try Auth.auth().signOut()
-                self.dismiss(animated: true, completion: nil)
-                let VCViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.Viewcontroller) as? ViewController
+          
+                guard let userId = Auth.auth().currentUser?.uid else {return}
+                  let db = Firestore.firestore()
+                 db.collection("cart").whereField("uid", isEqualTo: userId).getDocuments { (querySnapshot, error) in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "something wrong")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                document.reference.delete()
+                            }
                 
-                self.view.window?.rootViewController = VCViewController
-                self.view.window?.makeKeyAndVisible()
+                        }
+                    }
+                
+                  do {
+                              try Auth.auth().signOut()
+                              self.dismiss(animated: true, completion: nil)
+                              let VCViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.Viewcontroller) as? ViewController
+                              
+                              self.view.window?.rootViewController = VCViewController
+                              self.view.window?.makeKeyAndVisible()
                 
                 
                 } catch let err {

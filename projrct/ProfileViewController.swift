@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseAnalytics
+import FirebaseCore
 
 class ProfileViewController: UIViewController {
 
@@ -50,6 +52,19 @@ setUpElements()
     }
 
     @IBAction func logoutpressed(_ sender: Any) {
+           guard let userId = Auth.auth().currentUser?.uid else {return}
+                       let db = Firestore.firestore()
+                      db.collection("cart").whereField("uid", isEqualTo: userId).getDocuments { (querySnapshot, error) in
+                             if error != nil {
+                                 print(error?.localizedDescription ?? "something wrong")
+                             } else {
+                                 for document in querySnapshot!.documents {
+                                     document.reference.delete()
+                                 }
+                     
+                             }
+                         }
+        
         do {
             try Auth.auth().signOut()
             self.dismiss(animated: true, completion: nil)

@@ -36,10 +36,10 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
          let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
              
-             self.arr.remove(at: indexPath.row)
+            self.arr.remove(at: indexPath.row)
              //reload the table to avoid index out of bounds crash..
-             self.cartTableView.deleteRows(at: [indexPath], with: .automatic)
-        
+            self.cartTableView.deleteRows(at: [indexPath], with: .automatic)
+            
              complete(true)
          }
          
@@ -69,7 +69,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
       
         cartTableView.dataSource = self
         cartTableView.delegate = self
-        cartTableView.reloadData()
+        //cartTableView.reloadData()
         
                               guard let userId = Auth.auth().currentUser?.uid else {return}
              //print(userId)
@@ -97,8 +97,11 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                         //self?.cartTableView.endUpdates()
                         self?.cartTableView.reloadData()
 
+                    
                     }
                 }
+               // self?.cartTableView.reloadData()
+                
         }
        
         
