@@ -60,6 +60,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //var namecartrecieved = ""
     
     var arr = [CartData]()
+    var send = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,13 +103,34 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 }
                // self?.cartTableView.reloadData()
                 
+                
         }
+        
+        
        
         
 
     }
 
     
+    @IBAction func orderclicked(_ sender: Any) {
+        
+        for ar in self.arr {
+            print(ar.CartPrice)
+            self.send += ar.CartPrice
+            
+        }
+        
+        let checkViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.CheckOutViewController) as? CheckOutViewController
+        checkViewController?.totalrecieved = self.send
+        
+        self.present(checkViewController! , animated: true)
+        
+        self.send = 0.0
+        
+        
+        
+    }
     
 
 }

@@ -21,11 +21,17 @@ class CheckOutViewController: UIViewController {
     let cities = ["Amman","Salt","Madaba","Irbid","Ajloun","Jerash","Aqaba","Alkarak","Almafraq"]
     //let payments = ["Cash on delivery","Apple Pay"]
     
-    var pickerview = UIPickerView()
+    @IBOutlet weak var showtotal: UILabel!
     
+    
+    
+    var pickerview = UIPickerView()
+    var totalrecieved = 0.0
+    var discount = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showtotal.text = "price of products : \(totalrecieved) Jd"
         pickerview.dataSource = self
         pickerview.delegate = self
         adress.inputView = pickerview
