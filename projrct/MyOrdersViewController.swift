@@ -29,6 +29,9 @@ class MyOrdersViewController: UIViewController, UITableViewDelegate , UITableVie
 cell.orderStatus.text = ordersArr[indexPath.row].orderstatus
             
         }
+        
+        cell.layer.borderColor = UIColor.blue.cgColor
+        cell.layer.borderWidth = 0.5
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

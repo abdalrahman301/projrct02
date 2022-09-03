@@ -21,7 +21,10 @@ class AccountViewController: UIViewController, UITableViewDelegate , UITableView
         let cell = MyTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyFirstTableViewCell
         cell.imgtable.image = UIImage(named:AccountList[indexPath.row].AccountImage)
         cell.labeltabel.text = AccountList[indexPath.row].AccountName
-                             
+                        cell.layer.borderColor = UIColor.blue.cgColor
+                        cell.layer.borderWidth = 0.5
+        
+        
     return cell
         
     }

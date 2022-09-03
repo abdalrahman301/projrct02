@@ -25,6 +25,8 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.numberproduct.text = ("\(arr[indexPath.row].CartNumber)X")
         cell.priceproduct.text = "\(arr[indexPath.row].CartPrice) Jd"
         //tableView.reloadData()
+        cell.layer.borderColor = UIColor.blue.cgColor
+        cell.layer.borderWidth = 0.5
            return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
