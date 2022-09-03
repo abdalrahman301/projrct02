@@ -31,13 +31,13 @@ class AccountViewController: UIViewController, UITableViewDelegate , UITableView
             let next = self.storyboard?.instantiateViewController(withIdentifier: "profileVC") as! ProfileViewController
             self.present(next, animated: true, completion: nil)
             
-        }else if indexPath.row == 1{
+        }else if indexPath.row == 2{
              let next = self.storyboard?.instantiateViewController(withIdentifier: "ordersVC") as! MyOrdersViewController
                        self.present(next, animated: true, completion: nil)
-        }else if indexPath.row == 2 {
+        }else if indexPath.row == 3 {
              let next = self.storyboard?.instantiateViewController(withIdentifier: "discountVC") as! DiscountViewController
                        self.present(next, animated: true, completion: nil)
-        }else if indexPath.row == 4 {
+        }else if indexPath.row == 5 {
           
                 guard let userId = Auth.auth().currentUser?.uid else {return}
                   let db = Firestore.firestore()
@@ -66,13 +66,24 @@ class AccountViewController: UIViewController, UITableViewDelegate , UITableView
                                       errAlertSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                                       self.present(errAlertSent, animated: true, completion: nil)
             }
-                }
+        } else if indexPath.row == 1 {
+             let next = self.storyboard?.instantiateViewController(withIdentifier: "favouriteVC") as! FavouriteViewController
+                                  self.present(next, animated: true, completion: nil)
+        }
+            
         else {
             let showAboutSent = UIAlertController(title: "About!", message: "You can know more about us if you visit our website www.perfumeworld.com ", preferredStyle: .alert)
             showAboutSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(showAboutSent, animated: true, completion: nil)
         }
     }
+    
+      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+          return 90
+      }
+      func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+          return 50
+      }
     
 
     @IBOutlet weak var Accountname: UILabel!
@@ -112,14 +123,16 @@ filldata()
     func filldata () {
        let account1 = AccountData(AName: "Profile", AImg: "profile")
         AccountList.append(account1)
-         let account2 = AccountData(AName: "My Orders", AImg: "orders")
+        let account2 = AccountData(AName: "Favourites" , AImg: "fav")
         AccountList.append(account2)
-         let account3 = AccountData(AName: "Codes", AImg: "discount")
-               AccountList.append(account3)
-         let account4 = AccountData(AName: "Help", AImg: "help")
+         let account3 = AccountData(AName: "My Orders", AImg: "orders")
+        AccountList.append(account3)
+         let account4 = AccountData(AName: "Codes", AImg: "discount")
                AccountList.append(account4)
-        let account5 = AccountData(AName: "Log out", AImg: "logout")
-        AccountList.append(account5)
+         let account5 = AccountData(AName: "Help", AImg: "help")
+               AccountList.append(account5)
+        let account6 = AccountData(AName: "Log out", AImg: "logout")
+        AccountList.append(account6)
     }
     
 }

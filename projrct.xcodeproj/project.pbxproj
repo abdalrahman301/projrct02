@@ -35,6 +35,11 @@
 		35F488A92892BA21001BBA37 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F488A82892BA21001BBA37 /* Utilities.swift */; };
 		35FCAADE289BDF74009004D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FCAADD289BDF74009004D3 /* Constants.swift */; };
 		35FCAAE2289C06BD009004D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35FCAAE1289C06BD009004D3 /* GoogleService-Info.plist */; };
+		35FFB65A28C2A25F00B389B0 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFB65928C2A25F00B389B0 /* FavouriteViewController.swift */; };
+		35FFB65C28C2A92900B389B0 /* favData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFB65B28C2A92900B389B0 /* favData.swift */; };
+		35FFB65E28C2AA5100B389B0 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFB65D28C2AA5100B389B0 /* FavouriteTableViewCell.swift */; };
+		35FFB66028C2CFDE00B389B0 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFB65F28C2CFDE00B389B0 /* OrdersTableViewCell.swift */; };
+		35FFB66228C2D0C400B389B0 /* orderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FFB66128C2D0C400B389B0 /* orderData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +73,11 @@
 		35F488A82892BA21001BBA37 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		35FCAADD289BDF74009004D3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		35FCAAE1289C06BD009004D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		35FFB65928C2A25F00B389B0 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		35FFB65B28C2A92900B389B0 /* favData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favData.swift; sourceTree = "<group>"; };
+		35FFB65D28C2AA5100B389B0 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
+		35FFB65F28C2CFDE00B389B0 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
+		35FFB66128C2D0C400B389B0 /* orderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderData.swift; sourceTree = "<group>"; };
 		42A889D8809699DFDB60BAE4 /* Pods_projrct.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_projrct.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		686FE049476773AA9E2B68C8 /* Pods-projrct.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projrct.debug.xcconfig"; path = "Target Support Files/Pods-projrct/Pods-projrct.debug.xcconfig"; sourceTree = "<group>"; };
 		6C2702538E6B5480BC73A89A /* Pods-projrct.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projrct.release.xcconfig"; path = "Target Support Files/Pods-projrct/Pods-projrct.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,10 +133,12 @@
 				358D2BD4289A97380034334C /* ResetViewController.swift */,
 				358D2BD8289AA7430034334C /* MyCollectionViewCell.swift */,
 				35258D1F289AAA6F0016D7D5 /* PerfumeData.swift */,
+				35FFB65D28C2AA5100B389B0 /* FavouriteTableViewCell.swift */,
 				3513E5DF28A3C71F00FE0F84 /* CustomTabBarController.swift */,
 				3513E5E128A3CFF000FE0F84 /* MyFirstTableViewCell.swift */,
 				3513E5E328A3D10D00FE0F84 /* AccountViewController.swift */,
 				3513E5E528A3D24A00FE0F84 /* AccountData.swift */,
+				35FFB65928C2A25F00B389B0 /* FavouriteViewController.swift */,
 				3513E5E728A51EEA00FE0F84 /* ProfileViewController.swift */,
 				3513E5E928A51F0200FE0F84 /* MyOrdersViewController.swift */,
 				3513E5EB28A51F1600FE0F84 /* DiscountViewController.swift */,
@@ -135,6 +147,9 @@
 				358D192A28B4E7AF00581BFD /* CartData.swift */,
 				358D192C28B4E9E200581BFD /* CartViewController.swift */,
 				3588E2E328B6492D005D2413 /* CheckOutViewController.swift */,
+				35FFB65B28C2A92900B389B0 /* favData.swift */,
+				35FFB65F28C2CFDE00B389B0 /* OrdersTableViewCell.swift */,
+				35FFB66128C2D0C400B389B0 /* orderData.swift */,
 			);
 			path = projrct;
 			sourceTree = "<group>";
@@ -276,6 +291,8 @@
 				35FCAADE289BDF74009004D3 /* Constants.swift in Sources */,
 				3513E5E428A3D10D00FE0F84 /* AccountViewController.swift in Sources */,
 				3513E5E028A3C71F00FE0F84 /* CustomTabBarController.swift in Sources */,
+				35FFB66228C2D0C400B389B0 /* orderData.swift in Sources */,
+				35FFB65A28C2A25F00B389B0 /* FavouriteViewController.swift in Sources */,
 				356A513128929C2E007D769F /* ViewController.swift in Sources */,
 				35258D20289AAA6F0016D7D5 /* PerfumeData.swift in Sources */,
 				3513E5E828A51EEA00FE0F84 /* ProfileViewController.swift in Sources */,
@@ -285,14 +302,17 @@
 				35F488A92892BA21001BBA37 /* Utilities.swift in Sources */,
 				358D192B28B4E7AF00581BFD /* CartData.swift in Sources */,
 				3513E5E228A3CFF000FE0F84 /* MyFirstTableViewCell.swift in Sources */,
+				35FFB65C28C2A92900B389B0 /* favData.swift in Sources */,
 				356A512D28929C2E007D769F /* AppDelegate.swift in Sources */,
 				3513E5EA28A51F0200FE0F84 /* MyOrdersViewController.swift in Sources */,
 				35E966FB28AD0824002CA61E /* DetailsViewController.swift in Sources */,
 				3513E5E628A3D24A00FE0F84 /* AccountData.swift in Sources */,
+				35FFB66028C2CFDE00B389B0 /* OrdersTableViewCell.swift in Sources */,
 				3588E2E428B6492D005D2413 /* CheckOutViewController.swift in Sources */,
 				356A514328929CCA007D769F /* LogInViewController.swift in Sources */,
 				358D192D28B4E9E200581BFD /* CartViewController.swift in Sources */,
 				356A512F28929C2E007D769F /* SceneDelegate.swift in Sources */,
+				35FFB65E28C2AA5100B389B0 /* FavouriteTableViewCell.swift in Sources */,
 				358D2BD5289A97380034334C /* ResetViewController.swift in Sources */,
 				356A514528929CE7007D769F /* HomeViewController.swift in Sources */,
 			);

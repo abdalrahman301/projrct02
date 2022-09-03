@@ -18,6 +18,7 @@ struct Constants {
         static let CartViewController = "CartVC"
         static let ProfileViewController = "profileVC"
         static let CheckOutViewController = "checkVC"
+        static let FovouriteViewController = "favouriteVC"
         
     }
     

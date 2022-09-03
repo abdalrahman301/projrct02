@@ -31,6 +31,9 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var numberlabel: UILabel!
     
     
+    @IBOutlet weak var addtofav: UIButton!
+    
+    
     @IBOutlet weak var passeddescreption: UILabel!
     var descrecieved = ""
     var uid : String = ""
@@ -39,6 +42,7 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Utilities.styleFilledButton(addtocart)
+        Utilities.styleHollowButton(addtofav)
         passedimage.image = imagerecieved
         passedname.text = namerecieved
         paseedprice.text = "\(pricerecieved) Jd"
@@ -73,6 +77,7 @@ class DetailsViewController: UIViewController {
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
+                
                 print("Document added with ID: \(ref!.documentID)")
                 let showAddedSent = UIAlertController(title: "success!", message: "The prfume added successfully to cart ", preferredStyle: .alert)
                 showAddedSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -82,6 +87,33 @@ class DetailsViewController: UIViewController {
         
     }
     
+    
+    @IBAction func favButton(_ sender: Any) {
+        
+        
+           guard let userId = Auth.auth().currentUser?.uid else {return}
+             let db = Firestore.firestore()
+             var ref: DocumentReference? = nil
+             ref = db.collection("favourites").addDocument(data: [
+                 "name": namerecieved,
+                 "image": imgname,
+                 "uid" : userId
+                 
+             ]) { err in
+                 if let err = err {
+                     print("Error adding document: \(err)")
+                 } else {
+                     
+                     print("Document added with ID: \(ref!.documentID)")
+                     let showAddedSent = UIAlertController(title: "success!", message: "The prfume added successfully to favourites ", preferredStyle: .alert)
+                     showAddedSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                     self.present(showAddedSent, animated: true, completion: nil)
+                 }
+             }
+        
+        
+        
+    }
     
 
 }

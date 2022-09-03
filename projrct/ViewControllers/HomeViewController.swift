@@ -39,7 +39,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
                       
             
         }
-        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderColor = UIColor.blue.cgColor
         cell.layer.borderWidth = 0.5
         return cell
         
@@ -141,7 +141,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
         configureSearchController()
         MyCollectionView.dataSource = self
         MyCollectionView.delegate = self
-        ref.collection("perfumes").getDocuments() {[weak self] (querySnapshot, err) in
+        ref.collection("perfumes").order(by: "name", descending:  false).getDocuments {[weak self] (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
