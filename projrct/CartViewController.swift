@@ -102,7 +102,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         //cartTableView.reloadData()
         
         
-        //setupCollection()
+       // setupCollection()
         
       
         //self.view.setNeedsDisplay()
@@ -114,13 +114,18 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         setupCollection()
+       
+                
+        
+        }
         
         //cartTableView.reloadData()
-    }
+    
    
     
     
     func setupCollection() {
+        arr.removeAll()
                                 guard let userId = Auth.auth().currentUser?.uid else {return}
              //print(userId)
              let db = Firestore.firestore()
@@ -138,6 +143,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                         let number = document.data()["number"] as? Double
                         //print(document.data())
                        
+                        
                         let doc = CartData(CName: name ?? "", CImg: image ?? "", CPrc: price ?? 0 , CNmbr: number ?? 0)
                        
                         self?.arr.append(doc)
@@ -146,7 +152,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                         //self?.cartTableView.insertRows(at: [Myindex], with: .top)
                         //self?.cartTableView.endUpdates()
                         self?.cartTableView.reloadData()
-
+                        
                     
                     }
                 }

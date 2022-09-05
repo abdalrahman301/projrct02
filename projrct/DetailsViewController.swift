@@ -112,7 +112,9 @@ class DetailsViewController: UIViewController {
            
        
         if numberofclick > 0 {
-            print ("already")
+             let errAlertSent = UIAlertController(title: "Error", message: "This perfume is already in the favourites list!", preferredStyle: .alert)
+                                                 errAlertSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                                 self.present(errAlertSent, animated: true, completion: nil)
         }else {
         let db = Firestore.firestore()
             guard let userId = Auth.auth().currentUser?.uid else {return}
