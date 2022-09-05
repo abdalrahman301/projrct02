@@ -10,7 +10,8 @@ import UIKit
 
 class DiscountViewController: UIViewController {
     let code = "ABd11"
-    var discount = false
+   
+    var iftrue = false
     @IBOutlet weak var theCode: UITextField!
     
 
@@ -24,11 +25,29 @@ class DiscountViewController: UIViewController {
 
        setUpElements()
         //Confirm()
+        var discount = 0.0
+                if theCode.text == code {
+             discount = 3.5
+              goButton.isEnabled = false
+                                label.alpha = 1
+                   let VCViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.CheckOutViewController) as? CheckOutViewController
+                    VCViewController?.discountvalue = discount
+                  //  present(VCViewController! ,animated: true)
+             
+             
+         }else {
+             discount = 0.0
+            
+                
         
-        
+         }
+
+        print(discount)
         
         
     }
+   
+   
     
     func setUpElements () {
         Utilities.styleTextField(theCode)
@@ -37,18 +56,7 @@ class DiscountViewController: UIViewController {
     }
   
     @IBAction func Confirm(_ sender: Any) {
-        if theCode.text == code {
-            discount = true
-            let VCViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.CheckOutViewController) as? CheckOutViewController
-            VCViewController?.discountvalue = 3.5
-            goButton.isEnabled = false
-            label.alpha = 1
-        }else {
-            discount = false
-         let showTryAgainSent = UIAlertController(title: "Wrong code!", message: "Wrong code try agailn later  ", preferredStyle: .alert)
-                   showTryAgainSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                   self.present(showTryAgainSent, animated: true, completion: nil)
-        }
+        viewDidLoad()
         
     }
     
