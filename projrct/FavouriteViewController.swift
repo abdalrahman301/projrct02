@@ -33,17 +33,43 @@ class FavouriteViewController: UIViewController , UITableViewDataSource , UITabl
      }
          func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
           let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
-              
+              let db = Firestore.firestore()
+                     guard let userI = Auth.auth().currentUser?.uid else {return}
+            db.collection("favourites").whereField("name", isEqualTo: self.myArray[indexPath.row].favName).getDocuments { (querySnapshot, error) in
+                          
+                                             if error != nil {
+                                                 print(error?.localizedDescription ?? "something wrong")
+                                             } else {
+                                                for document in querySnapshot!.documents {
+                                                    self.newones = (document.data()["name"] as? String)!
+                                                    self.new = (document.data()["uid"] as? String)!
+                                                     if self.new == userI {
+                                                                                                 
+                                                document.reference.delete()
+                                        print("deleted successfully!")
+                                                                                                       
+                                } else {
+                                            print("nothing happen!")
+                                                                                                   }
+                                                                                                 
+                                             }
+                                               
+                                                
+                                         }
+                    }
              self.myArray.remove(at: indexPath.row)
               //reload the table to avoid index out of bounds crash..
              self.mytableview.deleteRows(at: [indexPath], with: .automatic)
+            
              
               complete(true)
+              
           }
           
           
           let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
           configuration.performsFirstActionWithFullSwipe = true
+            
              //self.cartTableView.reloadData()
           return configuration
       }
@@ -56,18 +82,23 @@ class FavouriteViewController: UIViewController , UITableViewDataSource , UITabl
     
     @IBOutlet weak var mytableview: UITableView!
     var myArray = [favData]()
+    var newones = ""
+    var new = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mytableview.dataSource = self
         mytableview.delegate = self
+        
+        
           
+        
                                     guard let userId = Auth.auth().currentUser?.uid else {return}
                    //print(userId)
                    let db = Firestore.firestore()
                    
-
+    
               db.collection("favourites").whereField("uid", isEqualTo: userId)
                   .getDocuments() {[weak self] (querySnapshot, err) in
                       if let err = err {

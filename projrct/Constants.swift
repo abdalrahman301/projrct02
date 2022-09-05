@@ -19,6 +19,8 @@ struct Constants {
         static let ProfileViewController = "profileVC"
         static let CheckOutViewController = "checkVC"
         static let FovouriteViewController = "favouriteVC"
+        static let DiscountViewController = "discountVC"
+        
         
     }
     

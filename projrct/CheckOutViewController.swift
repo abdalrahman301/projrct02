@@ -47,10 +47,11 @@ class CheckOutViewController: UIViewController {
         super.viewDidLoad()
         Utilities.styleFilledButton(checkbutton)
         //checkbutton.isEnabled = false
-        if discount == true {
+         let VCViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.DiscountViewController) as? DiscountViewController
+        if VCViewController?.discount == true {
             discountvalue = 3.5
               discountLabel.text = "Discount : \(discountvalue) Jd"
-        }else {
+        } else {
             discountvalue = 0.0
               discountLabel.text = "Discount : \(discountvalue) Jd"
         }

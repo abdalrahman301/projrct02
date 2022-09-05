@@ -30,7 +30,7 @@ class DetailsViewController: UIViewController {
     
     @IBOutlet weak var numberlabel: UILabel!
     
-    
+    var newones = ""
     @IBOutlet weak var addtofav: UIButton!
     
     
@@ -38,7 +38,7 @@ class DetailsViewController: UIViewController {
     var descrecieved = ""
     var uid : String = ""
     var imgname = ""
-    
+    var numberofclick = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         Utilities.styleFilledButton(addtocart)
@@ -52,8 +52,28 @@ class DetailsViewController: UIViewController {
          stepper.maximumValue = 10
         stepper.minimumValue = 1
          
-    }
+        let db = Firestore.firestore()
+         guard let userI = Auth.auth().currentUser?.uid else {return}
+        db.collection("favourites").whereField("name", isEqualTo: namerecieved).getDocuments { (querySnapshot, error) in
+              
+                                 if error != nil {
+                                     print(error?.localizedDescription ?? "something wrong")
+                                 } else {
+                                    for document in querySnapshot!.documents {
+                                        self.newones = (document.data()["uid"] as? String)!
+                        
+                         
+                                 }
+                                    if self.newones == userI {
+                                        self.numberofclick = (querySnapshot?.documentChanges.count)!
+                                        print(self.numberofclick)
+                                    }
+                                    
+                             }
+        }
     
+         
+    }
     @IBAction func stepperchange(_ sender: UIStepper) {
         numberlabel.text = Int(sender.value).description
     }
@@ -89,10 +109,14 @@ class DetailsViewController: UIViewController {
     
     
     @IBAction func favButton(_ sender: Any) {
-        
-        
-           guard let userId = Auth.auth().currentUser?.uid else {return}
-             let db = Firestore.firestore()
+           
+       
+        if numberofclick > 0 {
+            print ("already")
+        }else {
+        let db = Firestore.firestore()
+            guard let userId = Auth.auth().currentUser?.uid else {return}
+             //let db = Firestore.firestore()
              var ref: DocumentReference? = nil
              ref = db.collection("favourites").addDocument(data: [
                  "name": namerecieved,
@@ -108,10 +132,11 @@ class DetailsViewController: UIViewController {
                      let showAddedSent = UIAlertController(title: "success!", message: "The prfume added successfully to favourites ", preferredStyle: .alert)
                      showAddedSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                      self.present(showAddedSent, animated: true, completion: nil)
+                    self.addtofav.isEnabled = false
                  }
              }
         
-        
+        }
         
     }
     

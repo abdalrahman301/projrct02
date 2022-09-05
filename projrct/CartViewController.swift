@@ -13,6 +13,7 @@ import FirebaseAuth
 import FirebaseCore
 
 class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         arr.count
     }
@@ -37,7 +38,30 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
         func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
          let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
-             
+              let db = Firestore.firestore()
+                                 guard let userI = Auth.auth().currentUser?.uid else {return}
+            db.collection("cart").whereField("name", isEqualTo: self.arr[indexPath.row].CartName).getDocuments { (querySnapshot, error) in
+                                      
+                                                         if error != nil {
+                                                             print(error?.localizedDescription ?? "something wrong")
+                                                         } else {
+                                                            for document in querySnapshot!.documents {
+                                                                self.newones = (document.data()["name"] as? String)!
+                                                                self.new = (document.data()["uid"] as? String)!
+                                                                 if self.new == userI {
+                                                                                                             
+                                                            document.reference.delete()
+                                                    print("deleted successfully!")
+                                                                                                                   
+                                            } else {
+                                                        print("nothing happen!")
+                                                                                                               }
+                                                                                                             
+                                                         }
+                                                           
+                                                            
+                                                     }
+                                }
             self.arr.remove(at: indexPath.row)
              //reload the table to avoid index out of bounds crash..
             self.cartTableView.deleteRows(at: [indexPath], with: .automatic)
@@ -63,9 +87,12 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     var arr = [CartData]()
     var send = 0.0
+    var new = ""
+    var newones = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         Utilities.styleFilledButton(checkOut)
        // cartTableView.rowHeight = UITableView.automaticDimension;
        // cartTableView.estimatedRowHeight = 60.0;
@@ -74,7 +101,27 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cartTableView.delegate = self
         //cartTableView.reloadData()
         
-                              guard let userId = Auth.auth().currentUser?.uid else {return}
+        
+        //setupCollection()
+        
+      
+        //self.view.setNeedsDisplay()
+        
+       
+        
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupCollection()
+        
+        //cartTableView.reloadData()
+    }
+   
+    
+    
+    func setupCollection() {
+                                guard let userId = Auth.auth().currentUser?.uid else {return}
              //print(userId)
              let db = Firestore.firestore()
              
@@ -107,12 +154,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 
                 
         }
-        
-        
-       
-        
-
-    }
+            }
 
     
     @IBAction func orderclicked(_ sender: Any) {
