@@ -73,10 +73,29 @@ class CheckOutViewController: UIViewController {
         self.apple.addTarget(self, action: #selector(tapForPay), for: .touchUpInside)
         //checkbutton.isEnabled = false
        
+        guard let userId = Auth.auth().currentUser?.uid else {return}
+         let db = Firestore.firestore()
+                    
+
+               db.collection("discount").whereField("uid", isEqualTo: userId)
+                   .getDocuments() { (querySnapshot, err) in
+                       if let err = err {
+                           print("Error getting documents: \(err)")
+                       } else {
+                        for document in querySnapshot!.documents {
+                           let yes = document.data()["discount"] as? Bool
+                            if yes == true {
+                                self.discountLabel.text = "Discount : 3.5 Jd"
+                                self.discountvalue = 3.5
+                            }else {
+                                self.discountvalue = 0.0
+                                
+                            }
+                        }
+                    }
+        }
         
-        
-        discountLabel.text = "Discount : \(discountvalue) Jd"
-        
+        discountvalue = 3.5
         total = totalrecieved + tax - discountvalue
         showtotal.text = "price of products : \(totalrecieved) Jd"
         //discountLabel.text = "Discount : \(discountvalue) Jd"

@@ -21,8 +21,8 @@ class FavouriteViewController: UIViewController , UITableViewDataSource , UITabl
         let cell = mytableview.dequeueReusableCell(withIdentifier: "favcell", for: indexPath) as! FavouriteTableViewCell
         cell.favouriteimage.image = UIImage(named: myArray[indexPath.row].favImage)
         cell.favouritename.text = myArray[indexPath.row].favName
-        cell.layer.borderColor = UIColor.blue.cgColor
-        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.init(red: 58/255, green: 88/255, blue: 99/255, alpha: 1).cgColor
+        cell.layer.borderWidth = 0.8
            return cell
     }
        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

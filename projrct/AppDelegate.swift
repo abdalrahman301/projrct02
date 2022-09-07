@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         let content = UNMutableNotificationContent()
         content.title = "Hey"
-        content.body = "notify!"
+        content.body = "Try to use yhis code to get a discount up to 3.5 Jd on your checkout process!"
         let date = Date().addingTimeInterval(10)
         let dateComponents = Calendar.current.dateComponents([.year , .month , .day ,.hour ,.minute ,.second], from: date)
         let uuidString = UUID().uuidString

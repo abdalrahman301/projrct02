@@ -39,8 +39,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate , UICollecti
                       
             
         }
-        cell.layer.borderColor = UIColor.blue.cgColor
-        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.init(red: 58/255, green: 88/255, blue: 99/255, alpha: 1).cgColor
+        cell.layer.borderWidth = 0.8
         return cell
         
     }

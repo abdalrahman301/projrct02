@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class DiscountViewController: UIViewController {
     let code = "ABd11"
@@ -25,24 +27,7 @@ class DiscountViewController: UIViewController {
 
        setUpElements()
         //Confirm()
-        var discount = 0.0
-                if theCode.text == code {
-             discount = 3.5
-              goButton.isEnabled = false
-                                label.alpha = 1
-                   let VCViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.CheckOutViewController) as? CheckOutViewController
-                    VCViewController?.discountvalue = discount
-                  //  present(VCViewController! ,animated: true)
-             
-             
-         }else {
-             discount = 0.0
-            
-                
-        
-         }
-
-        print(discount)
+ 
         
         
     }
@@ -56,8 +41,22 @@ class DiscountViewController: UIViewController {
     }
   
     @IBAction func Confirm(_ sender: Any) {
-        viewDidLoad()
-        
+        if theCode.text == code {
+            var ref : DocumentReference? = nil
+        guard let userId = Auth.auth().currentUser?.uid else {return}
+        let db = Firestore.firestore()
+        ref = db.collection("discount").addDocument(data: ["uid":userId, "discount":true]) { (error) in
+             if let error = error {
+                           print("Error adding document: \(error)")
+                       } else {
+                           
+                           print("Document added with ID: \(ref!.documentID)")
+                           let showAddedSent = UIAlertController(title: "Wow!", message: "Go and enjoy your discount", preferredStyle: .alert)
+                           showAddedSent.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                           self.present(showAddedSent, animated: true, completion: nil)
+                       }
+            }
+        }
     }
     
 }
