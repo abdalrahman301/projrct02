@@ -92,8 +92,7 @@ class SignUpViewController: UIViewController {
         
         
         
-        
-        
+
        let error = validateFields()
             
             if error != nil {
